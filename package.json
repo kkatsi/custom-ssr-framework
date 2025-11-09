@@ -1,0 +1,35 @@
+{
+  "name": "custom-ssr-framework",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/server/main.ts",
+    "build:client": "vite build --outDir dist/client",
+    "build:server": "vite build --ssr src/server/main.ts --outDir dist/server",
+    "preview": "NODE_ENV=production node dist/server/entry.js",
+    "format:write": "prettier --write --parser typescript '**/*.{js,mjs,cjs,ts,tsx}'"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.90.7",
+    "express": "^5.1.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "6.30.1",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vite-express": "*"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/node": "^22.15.2",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.4.1",
+    "esbuild-plugin-ignore": "^1.1.1",
+    "ignore-styles": "^5.0.1",
+    "nodemon": "^3.1.10",
+    "prettier": "^3.6.2",
+    "vite": "^6.3.3"
+  }
+}
