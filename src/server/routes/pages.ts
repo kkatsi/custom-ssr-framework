@@ -1,6 +1,6 @@
 import express from 'express';
 import { UserProfilePage } from '../../shared/models/page.js';
-import { routes } from '../../shared/models/routes.js';
+import { routes } from '@/shared/config/routes.js';
 
 export const pagesRouter = express.Router();
 

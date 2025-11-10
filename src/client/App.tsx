@@ -1,31 +1,33 @@
 import { generatePath, Link, Route, Routes } from 'react-router-dom';
-import { routes } from '../shared/models/routes';
 import UserProfile from './pages/UserProfile';
+import LinkWithPrefetch from './components/LinkWithPrefetch';
+import { routes } from '@/shared/config/routes';
+import OptimisticLink from './components/OptimisticLink';
 
 function App() {
   return (
     <>
-      <Link
+      <OptimisticLink
         to={generatePath(routes.userProfile, {
           id: '1',
         })}
       >
         User 1
-      </Link>
-      <Link
+      </OptimisticLink>
+      <OptimisticLink
         to={generatePath(routes.userProfile, {
           id: '2',
         })}
       >
         User 2
-      </Link>
-      <Link
+      </OptimisticLink>
+      <OptimisticLink
         to={generatePath(routes.userProfile, {
           id: '3',
         })}
       >
         User 3
-      </Link>
+      </OptimisticLink>
       <Routes>
         <Route path="/" element={<>Home</>} />
         <Route path={routes.userProfile} element={<UserProfile />} />

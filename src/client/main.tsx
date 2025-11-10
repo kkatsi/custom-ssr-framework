@@ -1,10 +1,10 @@
-import './index.css';
-import React from 'react';
-import { hydrateRoot } from 'react-dom/client';
-import App from './App';
-import { PageModel } from '../shared/models/page';
-import { BrowserRouter } from 'react-router-dom';
 import { hydrate, QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { hydrateRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import { PageModel } from '../shared/models/page';
+import App from './App';
+import './index.css';
+import ErrorBoundary from './components/ErrorBoundary';
 
 declare global {
   interface Window {
@@ -28,9 +28,11 @@ if (reactQueryData) hydrate(queryClient, reactQueryData);
 
 hydrateRoot(
   document.getElementById('root')!,
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </QueryClientProvider>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </QueryClientProvider>
+  </ErrorBoundary>
 );

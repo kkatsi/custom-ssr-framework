@@ -1,6 +1,5 @@
+import { routes } from '@/shared/config/routes.js';
 import express from 'express';
-import { UserProfilePage } from '../../shared/models/page.js';
-import { routes } from '../../shared/models/routes.js';
 
 export const apiRouter = express.Router();
 
