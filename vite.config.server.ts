@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
+import { builtinModules } from 'module';
 
 export default defineConfig({
   plugins: [react()],
@@ -8,7 +9,9 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
+    dedupe: ['react', 'react-dom'],
   },
+  //NOTE: css section should match client config
   css: {
     modules: {
       localsConvention: 'camelCaseOnly',
@@ -22,10 +25,26 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: 'dist/client',
-    manifest: true,
+    ssr: true,
+    target: 'esnext',
+    outDir: 'dist/server',
     rollupOptions: {
-      input: './index.html',
+      input: './src/server/main.ts',
+      output: {
+        format: 'es',
+        entryFileNames: '[name].js',
+      },
+      external: [
+        ...builtinModules,
+        ...builtinModules.map((m) => `node:${m}`),
+        'express',
+        'fsevents',
+        'chokidar',
+      ],
     },
+  },
+  ssr: {
+    target: 'node',
+    noExternal: true,
   },
 });

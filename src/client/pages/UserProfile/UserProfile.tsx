@@ -1,6 +1,7 @@
 import { apiRoutes, routes, queriesConfig } from '@/shared/config/routes';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
+import styles from './UserProfile.module.scss';
 
 const UserProfile = () => {
   const { id } = useParams<{ id: string }>();
@@ -15,13 +16,20 @@ const UserProfile = () => {
   if (!pageData) return <div>No data</div>;
 
   return (
-    <div>
-      <h2>
-        {pageData.firstName} {pageData.lastName}
-      </h2>
-      <h5>{pageData.username}</h5>
-      <span>{pageData.email}</span>
-      <img src={pageData.image} alt="" />
+    <div className={styles.container}>
+      <div className={styles.header}>
+        <img src={pageData.image} alt={pageData.username} className={styles.avatar} />
+        <h1 className={styles.name}>
+          {pageData.firstName} {pageData.lastName}
+        </h1>
+        <span className={styles.username}>@{pageData.username}</span>
+      </div>
+
+      <div className={styles.info}>
+        <p className={styles.email}>{pageData.email}</p>
+      </div>
+
+      <div className={styles.actions}></div>
     </div>
   );
 };

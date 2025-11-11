@@ -6,7 +6,7 @@ import { BFFService } from './service/bff.ts';
 declare global {
   namespace Express {
     interface Request {
-      vite: ViteDevServer;
+      vite: ViteDevServer | null;
       bff: BFFService;
     }
     interface Response {

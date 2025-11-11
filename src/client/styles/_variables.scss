@@ -1,0 +1,38 @@
+// src/styles/_variables.scss
+// Colors
+$primary: #3498db;
+$secondary: #2ecc71;
+$danger: #e74c3c;
+$text: #2c3e50;
+$background: #ecf0f1;
+
+// Spacing
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Breakpoints
+$mobile: 768px;
+$tablet: 1024px;
+$desktop: 1440px;
+
+// Mixins
+@mixin mobile {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop) {
+    @content;
+  }
+}

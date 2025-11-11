@@ -3,7 +3,6 @@ import { hydrateRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { PageModel } from '../shared/models/page';
 import App from './App';
-import './index.css';
 import ErrorBoundary from './components/ErrorBoundary';
 
 declare global {
