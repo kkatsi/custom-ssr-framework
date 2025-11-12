@@ -57,12 +57,12 @@ export const buildHtmlPage = async (req: Request, pageData: PageModel) => {
   } else {
     // === PRODUCTION ===
     // 1. Read the *built* client index.html
-    template = fs.readFileSync(path.resolve(__dirname, '../client/index.html'), 'utf-8');
+    template = fs.readFileSync(path.resolve(__dirname, '../../client/index.html'), 'utf-8');
 
     // 2. Dynamically import the App component.
     // The Vite server build will see this and bundle App.tsx correctly.
     // Adjust the path if needed, relative to this file (buildHtmlPage.ts)
-    const { default: AppComponent } = await import('@/client/App.js');
+    const { default: AppComponent } = await import('../client/App.js');
     App = AppComponent;
   }
 
