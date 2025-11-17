@@ -1,4 +1,4 @@
-import { routes } from '@/shared/config/routes';
+import { pagesRoutes } from '@/shared/config/routes';
 import { generatePath, Outlet, Route, Routes } from 'react-router-dom';
 import OptimisticLink from './components/OptimisticLink';
 import useUpdateDocumentTitle from './hooks/useUpdateDocumentTitle';
@@ -11,21 +11,21 @@ function Layout() {
     <>
       <nav>
         <OptimisticLink
-          to={generatePath(routes.userProfile, {
+          to={generatePath(pagesRoutes.userProfile, {
             id: '1',
           })}
         >
           User 1
         </OptimisticLink>
         <OptimisticLink
-          to={generatePath(routes.userProfile, {
+          to={generatePath(pagesRoutes.userProfile, {
             id: '2',
           })}
         >
           User 2
         </OptimisticLink>
         <OptimisticLink
-          to={generatePath(routes.userProfile, {
+          to={generatePath(pagesRoutes.userProfile, {
             id: '3',
           })}
         >
@@ -42,7 +42,7 @@ function App() {
     <Routes>
       <Route element={<Layout />}>
         <Route path="/" element={<>Home</>} />
-        <Route path={routes.userProfile} element={<UserProfile />} />
+        <Route path={pagesRoutes.userProfile} element={<UserProfile />} />
       </Route>
     </Routes>
   );

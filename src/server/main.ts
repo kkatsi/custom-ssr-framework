@@ -36,8 +36,13 @@ export async function createApp(vite: ViteDevServer | undefined) {
 
   // Your routes and middleware
   app.use(ssrMiddleware);
-  app.use('/api', apiRouter);
-  app.use('/', pagesRouter);
+  app.use(apiRouter, pagesRouter);
+
+  app.use((_req, res) => {
+    res.renderPage({
+      $type: 'EmptyPage',
+    });
+  });
 
   return app;
 }

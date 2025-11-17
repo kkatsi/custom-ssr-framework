@@ -1,4 +1,4 @@
-import { apiRoutes, routes, queriesConfig } from '@/shared/config/routes';
+import { apiRoutes, pagesRoutes, queriesConfig } from '@/shared/config/routes';
 import { useQuery } from '@tanstack/react-query';
 import { useParams } from 'react-router-dom';
 import styles from './UserProfile.module.scss';
@@ -9,7 +9,7 @@ const UserProfile = () => {
     data: pageData,
     isLoading,
     error,
-  } = useQuery(queriesConfig[routes.userProfile].getQueryOptions({ id: id! }));
+  } = useQuery(queriesConfig[pagesRoutes.userProfile].getQueryOptions({ id: id! }));
 
   if (isLoading) return <div className="page-loader">Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
